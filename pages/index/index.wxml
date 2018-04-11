@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class='container flex-column'>
+    <text class='title' selectable='false'>快递查询助手</text>
+    <!--输入单号  -->
+    <view class='search flex-row'>
+      <text>单号：</text>
+      <input class='search-ipt' type='number' value='{{value}}' placeholder='请输入快递单号' placeholder-class='placeholder' focus bindinput='expressInput'/>
+    </view>
+    <!--查询按钮  -->
+    <button class='search-tap' loading='{{loading}}' bindtap='searchTap'>查询快递</button>
+    <!--物流列表  -->
+    <scroll-view scroll-y class='flex-column'>
+     <text wx:if='{{!flag}}' class='items flag'>查询失败，请稍后再试~</text> 
+      <text wx:if='{{flag}}' class='items flag'>{{expTextName}}</text>
+      <view wx:for="{{expressList}}" class='items flex-column'>
+        <text>{{item.time}}</text>
+        <text>{{item.context}}</text>
+      </view>
+     
+    </scroll-view>
+ </view>
+
+ <!--快递单号1：481671308332（zhongtong） -->
+ <!--快递单号2：708222751395（shunfeng）  -->
